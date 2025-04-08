@@ -39,12 +39,18 @@ async function main() {
                 console.log(`Did I win? ${receipt.logs.length > 0}`);
                 break;
             case 3:
-                // tx = await game.win();
-                // receipt = await tx.wait();
+                tx = await game.win(56);
+                receipt = await tx.wait();
+                console.log(`Did I win? ${receipt.logs.length > 0}`);
                 break;
             case 4:
-                // tx = await game.win();
-                // receipt = await tx.wait();
+                tx = await game.giveMeAllowance(100000);
+                await tx.wait();
+                tx = await game.mint(10000)
+                await tx.wait();
+                tx = await game.win();
+                receipt = await tx.wait();
+                console.log(`Did I win? ${receipt.logs.length > 0}`);
                 break;
 
         }
